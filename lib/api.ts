@@ -1,7 +1,12 @@
 import type { ExamCategory, NoticeUpdate, PracticeSet, Question } from '../types';
 import type { BulkQuestionInput } from './question-import';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const rawApiUrl = process.env.NEXT_PUBLIC_API_URL?.trim();
+const defaultUrl = process.env.NODE_ENV === 'production'
+  ? 'https://carrer-point-backend-79l4.onrender.com/api'
+  : 'http://localhost:5000/api';
+
+const API_BASE_URL = (rawApiUrl || defaultUrl).replace(/\/+$/, '');
 const TOKEN_KEY = 'ar_career_point_token';
 export const getToken = () => typeof window === 'undefined' ? null : sessionStorage.getItem(TOKEN_KEY);
 export const setToken = (token: string | null) => {
