@@ -6,7 +6,12 @@ const defaultUrl = process.env.NODE_ENV === 'production'
   ? 'https://carrer-point-backend-79l4.onrender.com/api'
   : 'http://localhost:5000/api';
 
-const API_BASE_URL = (rawApiUrl || defaultUrl).replace(/\/+$/, '');
+const configuredApiUrl = (rawApiUrl || defaultUrl).replace(/\/+$/, '');
+// The backend mounts all application routes under /api. Accept either the
+// server origin or the full API URL in Netlify's build environment.
+const API_BASE_URL = /\/api$/i.test(configuredApiUrl)
+  ? configuredApiUrl
+  : `${configuredApiUrl}/api`;
 const TOKEN_KEY = 'ar_career_point_token';
 export const getToken = () => typeof window === 'undefined' ? null : sessionStorage.getItem(TOKEN_KEY);
 export const setToken = (token: string | null) => {
