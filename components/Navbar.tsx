@@ -79,7 +79,7 @@ export const Navbar: React.FC = () => {
             {/* Brand Logo & Title */}
             <div
               onClick={() => handleNavClick('home')}
-              className="flex w-[210px] sm:w-[300px] items-center gap-2.5 sm:gap-3.5 cursor-pointer group flex-shrink-0"
+              className="flex min-w-0 flex-1 sm:flex-none sm:w-[300px] items-center gap-2.5 sm:gap-3.5 cursor-pointer group"
             >
               <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-[#082f6b] to-[#0966df] text-white flex items-center justify-center font-black text-base sm:text-xl shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform duration-200 border border-white/60 ring-2 ring-blue-500/20 shrink-0">
                 AR
@@ -127,7 +127,7 @@ export const Navbar: React.FC = () => {
               </div>
             </form>
 
-            <div className="relative w-[112px] shrink-0">
+            <div className="relative w-[96px] sm:w-[112px] shrink-0">
               <Languages aria-hidden="true" className="pointer-events-none absolute left-2.5 top-1/2 z-10 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" />
               <select
                 aria-label="Language"
@@ -142,9 +142,9 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* User Auth & Actions */}
-            <div className="flex min-w-[84px] sm:min-w-[154px] items-center justify-end gap-1.5 sm:gap-2.5">
+            <div className="flex min-w-0 md:min-w-[154px] items-center justify-end gap-1.5 sm:gap-2.5">
               {currentUser ? (
-                <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="hidden md:flex items-center gap-1.5 sm:gap-2">
                   <button
                     onClick={() => handleNavClick('dashboard')}
                     className="flex items-center gap-1.5 sm:gap-2 pl-1.5 sm:pl-2 pr-2.5 sm:pr-3 py-1 sm:py-1.5 bg-blue-50/80 hover:bg-blue-100 border border-blue-200/70 rounded-xl text-xs font-semibold text-[#082f6b] transition-all"
@@ -168,7 +168,7 @@ export const Navbar: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-1 sm:gap-2">
+                <div className="hidden md:flex items-center gap-1 sm:gap-2">
                   <button
                     onClick={() => openAuthModal('login')}
                     className="inline-flex w-[74px] items-center justify-center gap-1 px-2 py-1.5 sm:py-2 text-xs font-bold text-[#082f6b] hover:text-blue-700 bg-slate-50 hover:bg-slate-100 rounded-lg sm:rounded-xl border border-slate-200 transition-colors"
@@ -178,7 +178,7 @@ export const Navbar: React.FC = () => {
                   </button>
                   <button
                     onClick={() => openAuthModal('signup')}
-                    className="hidden sm:inline-flex w-[78px] items-center justify-center gap-1.5 px-2 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#ff7a18] to-[#ea580c] hover:brightness-105 rounded-xl shadow-xs transition-all"
+                    className="hidden md:inline-flex w-[78px] items-center justify-center gap-1.5 px-2 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#ff7a18] to-[#ea580c] hover:brightness-105 rounded-xl shadow-xs transition-all"
                   >
                     {t('Sign Up')}
                   </button>
